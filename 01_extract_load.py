@@ -33,7 +33,7 @@ RAW_SCHEMA = "raw"
 
 # CMS Provider Data API endpoint for Hospital General Information
 # The dataset ID for hospitals is: xubh-q36u
-API_BASE_URL = "https://data.cms.gov/provider-data/api/1/datastore/query/xubh-q36u"
+API_BASE_URL = "https://data.cms.gov/data-api/v1/dataset/029c119f-f79c-49be-9100-344d31d10344/data"
 
 # ── EXTRACT (via API) ──────────────────────────────────────────────────
 print("=" * 60)
