@@ -1,0 +1,35 @@
+# schema.yml
+# Data tests are a critical part of any pipeline.
+# They catch data quality issues BEFORE bad data reaches dashboards.
+
+version: 2
+
+models:
+  - name: stg_hospitals
+    description: "Cleaned and standardized hospital data"
+    columns:
+      - name: facility_id
+        description: "Unique hospital identifier"
+        tests:
+          - unique        # No duplicates
+          - not_null      # No missing IDs
+      - name: state
+        tests:
+          - not_null
+      - name: overall_rating
+        tests:
+          - accepted_values:
+              values: [1, 2, 3, 4, 5]
+              # nulls are OK (hospitals without ratings)
+              quote: false
+
+  - name: mart_state_hospital_summary
+    description: "State-level hospital quality and access metrics"
+    columns:
+      - name: state
+        tests:
+          - unique
+          - not_null
+      - name: total_hospitals
+        tests:
+          - not_null

@@ -1,0 +1,18 @@
+# sources.yml
+# This file tells dbt about your RAW data (what was loaded by the extract script).
+# Think of sources as dbt's way of knowing "here's where the raw data lives."
+
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: "Raw CMS hospital data loaded by the extract script"
+    tables:
+      - name: hospitals
+        description: "CMS Hospital General Information - one row per hospital facility"
+        columns:
+          - name: "Facility ID"
+            description: "Unique CMS facility identifier"
+          - name: "Hospital overall rating"
+            description: "CMS star rating (1-5) or 'Not Available'"

@@ -1,0 +1,24 @@
+# dbt_project.yml
+# This is the main config file for your dbt project.
+# It tells dbt where to find your models, how to materialize them, etc.
+
+name: 'healthcare_pipeline'
+version: '1.0.0'
+config-version: 2
+
+profile: 'healthcare_pipeline'
+
+model-paths: ["models"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+
+# How dbt should build each folder of models
+models:
+  healthcare_pipeline:
+    staging:
+      # Staging models = views (lightweight, always reflect current raw data)
+      +materialized: view
+    marts:
+      # Mart models = tables (materialized for performance, these are what analysts query)
+      +materialized: table
